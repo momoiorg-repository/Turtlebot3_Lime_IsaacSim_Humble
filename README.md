@@ -1,4 +1,4 @@
-# Isaac Sim と ROS 2 Humble
+# Turtlebot3 LimeでIsaac Sim と ROS 2 Humble の体験
 
 このリポジトリには、Docker コンテナ内で NVIDIA Isaac Sim 4.5.0 と ROS 2 Humble 統合をセットアップするための設定ファイルとスクリプトが含まれています。
 
