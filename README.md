@@ -12,6 +12,9 @@
 
 ## インストール方法
 
+TurtleBot3 LimeのUSDはこちらからダウンロードできます。
+[Google Drive](https://drive.google.com/file/d/1zj03J05ni0jtlqXg845xG0uTzDkCmqzE/view?usp=sharing)
+
 ### 1. このリポジトリをクローンする
 
 ```bash
