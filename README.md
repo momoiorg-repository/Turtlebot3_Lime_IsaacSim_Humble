@@ -27,17 +27,10 @@ cd isaac_humble
 ### 2. Docker イメージをビルドする
 
 ```bash
-cd docker
 docker build -t isaac_ws:latest .
 ```
 
 これにより、NVIDIA の Isaac Sim 4.5.0 イメージをベースに、ROS 2 Humble 統合を含むカスタム Docker イメージがビルドされます。
-
-### 3. 永続ストレージ用の必要なディレクトリを作成する
-
-```bash
-mkdir -p ~/docker/isaac-sim/{cache/kit,cache/ov,cache/pip,cache/glcache,cache/computecache,logs,data,documents}
-```
 
 ## 使用方法
 
@@ -49,13 +42,19 @@ mkdir -p ~/docker/isaac-sim/{cache/kit,cache/ov,cache/pip,cache/glcache,cache/co
 isaac_sim_docker.sh
 ```
 
-2. RemoteからIsaac Sim を起動するには:
+これによって、"isaac-sim-ws" dockerが起動し、docker内のshellによるプロンプトが表示されるはずです
+
+2. Isaac Sim を起動する:
+
+このshellセッションを用いて、起動したdocker内にisaac simを起動します
 
 ```bash
 runheadless
 ```
 
-3. Omniver Streaming Client から接続を行う:
+3. Omnivers Streaming Client から接続する:
+
+docker内でisaac simが起動すれば、他のノードからOmnivers Streaming Clientを用いて、それにアクセスできるようになります
 
 https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/download.html
 
@@ -68,9 +67,9 @@ https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/download.html
 .
 ├── LICENSE - MIT ライセンス
 ├── README.md - このファイル
-└── docker/
-    ├── Dockerfile - Isaac Sim + ROS 2 Humble イメージをビルドする
-    └── isaac_sim_docker.sh - Isaac Sim コンテナを実行するスクリプト
+├── Dockerfile - Isaac Sim + ROS 2 Humble イメージをビルドする
+├── isaac_sim_docker.sh - Isaac Sim コンテナを実行するスクリプト
+├── isaac-sim - dockerがマウントする永続ストレージ
 ```
 
 ## 注意事項
