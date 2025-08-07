@@ -19,7 +19,7 @@ TurtleBot3 Limeは、移動機構と６自由度アームを備え、Jetson Orin
 ### 1. このリポジトリをクローンする
 
 ```bash
-git clone https://github.com/umegan/Isaacsim_humble.git isaac_humble
+git clone https://github.com/momoiorg-repository/Turtlebot3_Lime_IsaacSim_Humble.git isaac_humble
 cd isaac_humble
 ```
 
