@@ -35,22 +35,21 @@ docker build -t isaac_ws:latest .
 ### Isaac Sim の実行
 
 1. Docker containerを起動する
+
 ```bash
 isaac_sim_docker.sh
 ```
 
-これによって、"isaac-sim-ws" dockerが起動し、docker内のshellによるプロンプトが表示されるはずです
+これによって、"isaac-sim-ws" dockerが起動し、docker内のshellによるプロンプトが表示されるはずです。
 
-2. Isaac Sim を起動する:
-
-このshellセッションを用いて、起動したdocker内にIsaac Simを起動します
+2. Isaac Sim を起動する:  
+このshellセッションを用いて、起動したdocker内にIsaac Simを起動します。
 
 ```bash
 runheadless
 ```
 
-3. Omnivers Streaming Client から接続する:
-
+3. Omnivers Streaming Client から接続する:  
 docker内でisaac simが起動すれば、他のノードからOmnivers Streaming Clientを用いて、それにアクセスできるようになります。
 Omniverse Streaming Clientの、クライアントノードへのインストールは、下記を参照してください。
 
@@ -58,9 +57,8 @@ https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/download.html
 
 サーバ側のIPアドレスを記入して起動する必要があります。
 
-4. Isaac SimでTurtleBot3 Limeを実行する
-
-Omnivers Streaming Clientを用いて起動したIsaac Sim内でTurtleBot3 Limeを動作させるためには、LimeのUSDを読み込む必要があります。TurtleBot3 LimeのUSDはこちらからダウンロードできます。
+4. Isaac SimでTurtleBot3 Limeを実行する  
+Omnivers Streaming Clientを用いて起動したIsaac Sim内でTurtleBot3 Limeを動作させるためには、LimeのUSDを読み込む必要があります。LimeのUSDはこちらからダウンロードできます。
 
 [Google Drive](https://drive.google.com/file/d/1zj03J05ni0jtlqXg845xG0uTzDkCmqzE/view?usp=sharing)
 
