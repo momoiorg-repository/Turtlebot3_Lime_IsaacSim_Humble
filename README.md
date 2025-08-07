@@ -1,9 +1,11 @@
 # Turtlebot3 LimeでIsaac Sim と ROS 2 Humble の体験
 
 このリポジトリには、Docker コンテナ内で NVIDIA Isaac Sim 4.5.0 と ROS 2 Humble 統合をセットアップするための設定ファイルとスクリプトが含まれています。
-この環境を使用することで、Turllebot Limeのデモを含めたIsaac Sim 4.5.0の環境を構築することができます。
+この環境を使用することで、Turllebot Limeを実行するための、Isaac Sim 4.5.0の環境を構築することができます。
 
+![TurtleBot3 Limeシミュレーション](img/lime2.jpg)
 
+TurtleBot3 Limeは、移動機構と６自由度アームを備え、Jetson Orin Nanoを搭載したROS２ベースのロボットなので、Isaac Simの機能を１台で試すことが可能です。
 
 ## 前提条件
 
