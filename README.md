@@ -16,11 +16,12 @@ TurtleBot3 Limeは、移動機構と６自由度アームを備え、Jetson Orin
 
 ## インストール方法
 
-### 1. このリポジトリをクローンする
+### 1. このリポジトリをクローンして初期化する
 
 ```bash
 git clone https://github.com/momoiorg-repository/Turtlebot3_Lime_IsaacSim_Humble.git isaac_humble
 cd isaac_humble
+./init.sh
 ```
 
 ### 2. Docker イメージをビルドする
@@ -39,7 +40,7 @@ docker build -t isaac_ws:latest .
 1. Docker containerを起動する
 
 ```bash
-isaac_sim_docker.sh
+./isaac_sim_docker.sh
 ```
 
 これによって、"isaac-sim-ws" dockerが起動し、docker内のshellによるプロンプトが表示されるはずです。
@@ -74,7 +75,7 @@ wget等を用いて取得し、使用してください。
 ├── README.md - このファイル
 ├── Dockerfile - Isaac Sim + ROS 2 Humble イメージをビルドする
 ├── isaac_sim_docker.sh - Isaac Sim コンテナを実行するスクリプト
-├── isaac-sim - dockerがマウントする永続ストレージ
+├── init.sh - ディレクトリ構造を初期化するスクリプト
 ```
 
 ## 注意事項
