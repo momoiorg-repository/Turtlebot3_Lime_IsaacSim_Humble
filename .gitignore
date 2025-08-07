@@ -1,1 +1,8 @@
-/isaac-sim/*/*/*
+/isaac-sim/cache/computecache/
+/isaac-sim/cache/glcache/
+/isaac-sim/cache/ov/
+/isaac-sim/cache/pip/
+/isaac-sim/data/
+/isaac-sim/documents/
+/isaac-sim/logs/
+
