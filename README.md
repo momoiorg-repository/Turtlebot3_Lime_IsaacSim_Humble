@@ -14,9 +14,6 @@
 
 ## インストール方法
 
-TurtleBot3 LimeのUSDはこちらからダウンロードできます。
-[Google Drive](https://drive.google.com/file/d/1zj03J05ni0jtlqXg845xG0uTzDkCmqzE/view?usp=sharing)
-
 ### 1. このリポジトリをクローンする
 
 ```bash
@@ -46,7 +43,7 @@ isaac_sim_docker.sh
 
 2. Isaac Sim を起動する:
 
-このshellセッションを用いて、起動したdocker内にisaac simを起動します
+このshellセッションを用いて、起動したdocker内にIsaac Simを起動します
 
 ```bash
 runheadless
@@ -54,12 +51,20 @@ runheadless
 
 3. Omnivers Streaming Client から接続する:
 
-docker内でisaac simが起動すれば、他のノードからOmnivers Streaming Clientを用いて、それにアクセスできるようになります
+docker内でisaac simが起動すれば、他のノードからOmnivers Streaming Clientを用いて、それにアクセスできるようになります。
+Omniverse Streaming Clientの、クライアントノードへのインストールは、下記を参照してください。
 
 https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/download.html
 
-サーバ側のIPアドレスを記入して起動する
+サーバ側のIPアドレスを記入して起動する必要があります。
 
+4. Isaac SimでTurtleBot3 Limeを実行する
+
+Omnivers Streaming Clientを用いて起動したIsaac Sim内でTurtleBot3 Limeを動作させるためには、LimeのUSDを読み込む必要があります。TurtleBot3 LimeのUSDはこちらからダウンロードできます。
+
+[Google Drive](https://drive.google.com/file/d/1zj03J05ni0jtlqXg845xG0uTzDkCmqzE/view?usp=sharing)
+
+wget等を用いて取得し、使用してください。
 
 ## プロジェクト構造
 
