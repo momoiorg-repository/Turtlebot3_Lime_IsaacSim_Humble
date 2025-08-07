@@ -1,9 +1,0 @@
-/isaac_sim/*
-!/isaac_sim/cache/computecache/.gitkeep
-!/isaac_sim/cache/glcache/.gitkeep
-!/isaac_sim/cache/ov/.gitkeep
-!/isaac_sim/cache/pip/.gitkeep
-!/isaac_sim/data/.gitkeep
-!/isaac_sim/documents/.gitkeep
-!/isaac_sim/logs/.gitkeep
-
