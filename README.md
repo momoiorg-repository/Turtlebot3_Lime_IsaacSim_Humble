@@ -25,7 +25,7 @@ cd isaac_humble
 ./init.sh
 ```
 
-### 2. uild the Docker Image
+### 2. Build the Docker Image
 
 ```bash
 docker build -t isaac_ws:latest .
