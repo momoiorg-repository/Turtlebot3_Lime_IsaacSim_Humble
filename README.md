@@ -1,22 +1,23 @@
-# Turtlebot3 LimeでIsaac Sim と ROS 2 Humble の体験
+# Turtlebot3 Lime Experience with Isaac Sim and ROS 2 Humble
 
-このリポジトリには、Docker コンテナ内で NVIDIA Isaac Sim 4.5.0 と ROS 2 Humble 統合をセットアップするための設定ファイルとスクリプトが含まれています。
-この環境を使用することで、Turllebot Limeを実行するための、Isaac Sim 4.5.0の環境を構築することができます。
+This repository contains configuration files and scripts for setting up an NVIDIA Isaac Sim 4.5.0 and ROS 2 Humble integration within a Docker container. This environment lets you build a system for running the Turtlebot3 Lime in Isaac Sim.
+
+
 
 ![TurtleBot3 Limeシミュレーション](img/lime2.jpg)
 
-TurtleBot3 Limeは、移動機構と６自由度アームを備え、Jetson Orin Nanoを搭載したROS２ベースのロボットなので、Isaac Simの機能を１台で試すことが可能です。
+TurtleBot3 Lime is a ROS 2-based robot with a mobile base, a 6-DoF arm, and a Jetson Orin Nano, making it a single platform to explore all of Isaac Sim's features.
 
-## 前提条件
-
-- 最新ドライバーがインストールされた NVIDIA GPU
-- NVIDIA Container Toolkit がインストールされた Docker
-- 少なくとも 30GB の空きディスク容量
+## Prerequisites
+    
+- An NVIDIA GPU with the latest drivers installed
+- Docker with the NVIDIA Container Toolkit installed
+- At least 30 GB of free disk space
 - Ubuntu 22.04 
 
-## インストール方法
+## Installation
 
-### 1. このリポジトリをクローンして初期化する
+### 1. Clone and Initialize the Repository
 
 ```bash
 git clone https://github.com/momoiorg-repository/Turtlebot3_Lime_IsaacSim_Humble.git isaac_humble
@@ -24,67 +25,66 @@ cd isaac_humble
 ./init.sh
 ```
 
-### 2. Docker イメージをビルドする
+### 2. uild the Docker Image
 
 ```bash
 docker build -t isaac_ws:latest .
 ```
 
-これにより、NVIDIA の Isaac Sim 4.5.0 イメージをベースに、ROS 2 Humble 統合を含むカスタム Docker イメージがビルドされます。
+This command builds a custom Docker image based on the official NVIDIA Isaac Sim 4.5.0 image, with ROS 2 Humble integration added.
 
-## 使用方法
+## Usage
 
 
-### Isaac Sim の実行
+### Running Isaac Sim
 
-1. Docker containerを起動する
+1. Start the Docker container
 
 ```bash
 ./isaac_sim_docker.sh
 ```
 
-これによって、"isaac-sim-ws" dockerが起動し、docker内のshellによるプロンプトが表示されるはずです。
+This will launch the "isaac-sim-ws" Docker container and give you a shell prompt inside it.
 
-2. Isaac Sim を起動する:  
-このshellセッションを用いて、起動したdocker内にIsaac Simを起動します。
+2. Launch Isaac Sim
+From within the container's shell session, start Isaac Sim using the following command
 
 ```bash
 runheadless
 ```
 
-3. Omnivers Streaming Client から接続する:  
-docker内でisaac simが起動すれば、他のノードからOmnivers Streaming Clientを用いて、それにアクセスできるようになります。
-Omniverse Streaming Clientの、クライアントノードへのインストールは、下記を参照してください。
+3. Connect with the Omniverse Streaming Client
+Once Isaac Sim is running in Docker, you can access it from another node using the Omniverse Streaming Client. To install the client on your client node, refer to the instructions here:
 
 https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/download.html
 
-サーバ側のIPアドレスを記入して起動する必要があります。
+You will need to enter the server's IP address to connect.
 
-4. Isaac SimでTurtleBot3 Limeを実行する  
-Omnivers Streaming Clientを用いて起動したIsaac Sim内でTurtleBot3 Limeを動作させるためには、LimeのUSDを読み込む必要があります。LimeのUSDはこちらからダウンロードできます。
+4. Running TurtleBot3 Lime in Isaac Sim
+To operate the TurtleBot3 Lime inside Isaac Sim, you'll need to load the Lime's USD model. You can download the USD file from this link
 
 [Google Drive](https://drive.google.com/file/d/1zj03J05ni0jtlqXg845xG0uTzDkCmqzE/view?usp=sharing)
 
-wget等を用いて取得し、使用してください。
+Install and place it inside **/isaac_humble/isaac_sim/documents**
 
-## プロジェクト構造
+## Project Structure
 
 ```
 .
-├── LICENSE - MIT ライセンス
-├── README.md - このファイル
-├── Dockerfile - Isaac Sim + ROS 2 Humble イメージをビルドする
-├── isaac_sim_docker.sh - Isaac Sim コンテナを実行するスクリプト
-├── init.sh - ディレクトリ構造を初期化するスクリプト
+├── LICENSE - MIT License
+├── README.md - This file
+├── Dockerfile - Isaac Sim + ROS 2 Humble image
+├── isaac_sim_docker.sh -Script to run the Isaac Sim container
+├── init.sh - Script to initialize the directory structure
 ```
 
-## 注意事項
+## Notes
 
-- Docker イメージは公式の NVIDIA Isaac Sim 4.5.0 イメージをベースに ROS 2 Humble を追加しています
-- コンテナはホストの X11 サーバーを使用して GUI を表示します
-- データの永続性はホストファイルシステムへのボリュームマウントによって管理されています
-- RViz2 および一般的な ROS 2 ツールがコンテナにインストールされています
+- The Docker image is based on the official NVIDIA Isaac Sim 4.5.0 image with ROS 2 Humble added.
+- The container uses the host's X11 server to display the GUI.
+- Data persistence is managed via volume mounts to the host's filesystem.
+- RViz2 and common ROS 2 tools are installed in the container.
 
-## ライセンス
+## License
 
-このプロジェクトは MIT ライセンスの下で提供されています - 詳細はライセンスファイルをご覧ください。
+This project is provided under the MIT License. See the license file for more details.
