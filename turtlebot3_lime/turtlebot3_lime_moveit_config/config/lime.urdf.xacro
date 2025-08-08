@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
+    <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
+    <xacro:arg name="ros2_control_hardware_type" default="mock_components" />
+
+    <!-- Import urdf file -->
+    <xacro:include filename="lime.urdf" />
+
+    <!-- Import ros2_control description -->
+    <xacro:include filename="lime.ros2_control.xacro" />
+    <xacro:include filename="lime_gripper.ros2_control.xacro" />
+
+    <xacro:lime_ros2_control name="LimeFakeSystem" initial_positions_file="$(arg initial_positions_file)" ros2_control_hardware_type="$(arg ros2_control_hardware_type)"/>
+    <xacro:lime_gripper_ros2_control name="LimeGripperFakeSystem" ros2_control_hardware_type="$(arg ros2_control_hardware_type)"/>
+</robot>
