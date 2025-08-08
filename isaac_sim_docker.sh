@@ -13,14 +13,15 @@ docker run --name isaac-sim-ws -it --rm \
   --network host \
   --entrypoint /bin/bash \
   -e DISPLAY=$DISPLAY \
-  -v ./isaac_sim/cache/kit:/isaac-sim/kit/cache:rw \
-  -v ./isaac_sim/cache/ov:/root/.cache/ov:rw \
-  -v ./isaac_sim/cache/pip:/root/.cache/pip:rw \
-  -v ./isaac_sim/cache/glcache:/root/.cache/nvidia/GLCache:rw \
-  -v ./isaac_sim/cache/computecache:/root/.nv/ComputeCache:rw \
-  -v ./isaac_sim/logs:/root/.nvidia-omniverse/logs:rw \
-  -v ./isaac_sim/data:/root/.local/share/ov/data:rw \
-  -v ./isaac_sim/documents:/root/isaac-sim/Documents:rw \
+  -v ./isaac-sim/cache/kit:/isaac-sim/kit/cache:rw \
+  -v ./isaac-sim/cache/ov:/root/.cache/ov:rw \
+  -v ./isaac-sim/cache/pip:/root/.cache/pip:rw \
+  -v ./isaac-sim/cache/glcache:/root/.cache/nvidia/GLCache:rw \
+  -v ./isaac-sim/cache/computecache:/root/.nv/ComputeCache:rw \
+  -v ./isaac-sim/logs:/root/.nvidia-omniverse/logs:rw \
+  -v ./isaac-sim/data:/root/.local/share/ov/data:rw \
+  -v ./isaac-sim/documents:/root/Documents:rw \
+  -v ./turtlebot3_lime:/root/turtlebot3_lime/src:rw \
   -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
   -v $HOME/.Xauthority:/root/.Xauthority:ro \
   isaac_ws:latest
