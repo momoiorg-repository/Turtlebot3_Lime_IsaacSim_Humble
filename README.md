@@ -2,9 +2,12 @@
 
 This repository contains configuration files and scripts for setting up an NVIDIA Isaac Sim 4.5.0 and ROS 2 Humble integration within a Docker container. This environment lets you build a system for running the Turtlebot3 Lime in Isaac Sim.
 
-![TurtleBot3 Limeシミュレーション](img/lime2.jpg)
+![TurtleBot3 Limeシミュレーション](docs/imgs/lime2.jpg)
 
 TurtleBot3 Lime is a ROS 2-based robot with a mobile base, a 6-DoF arm, and a Jetson Orin Nano, making it a single platform to explore all of Isaac Sim's features.
+
+![TurtleBot3 Lime Nav2](docs/gifs/nav2.gif)
+![TurtleBot3 Lime Moveit2](docs/gifs/moveit2.gif)
 
 ## Prerequisites
 
