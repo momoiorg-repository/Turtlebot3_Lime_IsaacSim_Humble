@@ -54,6 +54,7 @@ RUN apt-get update \
        # TurtleBot3 Lime dependencies
        ros-humble-dynamixel-sdk \
        ros-humble-ros2-control \
+       ros-humble-pointcloud-to-laserscan \
        ros-humble-cartographer ros-humble-cartographer-ros \
        ros-humble-navigation2 ros-humble-nav2-bringup \
        ros-humble-ros2-controllers ros-humble-gripper-controllers \
@@ -77,26 +78,26 @@ RUN colcon mixin add default \
     && colcon metadata update
 
 # Install Miniconda
-RUN curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh \
-    && bash miniconda.sh -b -p /opt/conda \
-    && rm miniconda.sh \
-    && /opt/conda/bin/conda clean --all --yes \
-    && ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh \
-    && echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc \
-    && echo "conda activate base" >> ~/.bashrc
+# RUN curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh \
+#     && bash miniconda.sh -b -p /opt/conda \
+#     && rm miniconda.sh \
+#     && /opt/conda/bin/conda clean --all --yes \
+#     && ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh \
+#     && echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc \
+#     && echo "conda activate base" >> ~/.bashrc
 
 # Make conda available in the current session
-ENV PATH="/opt/conda/bin:${PATH}"
+# ENV PATH="/opt/conda/bin:${PATH}"
 
 # Install Isaac lab
-RUN apt-get update \
-    && git clone https://github.com/umegan/IsaacLab_lime.git /IsaacLab \
-    && cd /IsaacLab \
-    && ln -s /isaac-sim _isaac_sim \
-    && ./isaaclab.sh --conda lab \
-    && . /opt/conda/etc/profile.d/conda.sh \
-    && conda activate lab \
-    && ./isaaclab.sh --install 
+# RUN apt-get update \
+#     && git clone https://github.com/umegan/IsaacLab_lime.git /IsaacLab \
+#     && cd /IsaacLab \
+#     && ln -s /isaac-sim _isaac_sim \
+#     && ./isaaclab.sh --conda lab \
+#     && . /opt/conda/etc/profile.d/conda.sh \
+#     && conda activate lab \
+#     && ./isaaclab.sh --install 
 
 
 # Option 1: Clone your local TurtleBot3 Lime sources at runtime via -v

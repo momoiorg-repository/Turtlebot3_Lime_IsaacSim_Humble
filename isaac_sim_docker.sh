@@ -21,7 +21,7 @@ docker run --name isaac-sim-ws -it --rm \
   -v ./isaac-sim/logs:/root/.nvidia-omniverse/logs:rw \
   -v ./isaac-sim/data:/root/.local/share/ov/data:rw \
   -v ./isaac-sim/documents:/root/Documents:rw \
-  -v ./turtlebot3_lime:/root/turtlebot3_lime/src:rw \
+  -v ./turtlebot3_lime:/root/lime_ros/src:rw \
   -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
   -v $HOME/.Xauthority:/root/.Xauthority:ro \
   isaac_ws:latest
