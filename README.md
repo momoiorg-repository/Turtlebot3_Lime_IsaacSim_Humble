@@ -89,7 +89,7 @@ Install and place it inside **/isaac_humble/isaac_sim/documents**
 
 For more detailed instructions on using TurtleBot3 Lime—including how to import URDF, run Nav2, Moveit2, Isaac_ros_yolo, and more—please visit [https://momoi.org/](https://momoi.org/).
 
-The full document will be uploaded in September.
+The full document will be uploaded soon.
 
 ## License
 
