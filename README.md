@@ -1,96 +1,16 @@
-# Turtlebot3 Lime Experience with Isaac Sim and ROS 2 Humble
+# React + Vite
 
-This repository contains configuration files and scripts for setting up an NVIDIA Isaac Sim 4.5.0 and ROS 2 Humble integration within a Docker container. This environment lets you build a system for running the Turtlebot3 Lime in Isaac Sim.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-![TurtleBot3 Limeシミュレーション](docs/imgs/lime2.jpg)
+Currently, two official plugins are available:
 
-TurtleBot3 Lime is a ROS 2-based robot with a mobile base, a 6-DoF arm, and a Jetson Orin Nano, making it a single platform to explore all of Isaac Sim's features.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-![TurtleBot3 Lime Nav2](docs/gifs/nav2.gif)
-![TurtleBot3 Lime Moveit2](docs/gifs/moveit2.gif)
+## React Compiler
 
-## Prerequisites
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-- An NVIDIA GPU with the latest drivers installed
-- Docker with the NVIDIA Container Toolkit installed
-- At least 30 GB of free disk space
-- Ubuntu 22.04
+## Expanding the ESLint configuration
 
-## Installation
-
-### 1. Clone and Initialize the Repository
-
-```bash
-git clone https://github.com/momoiorg-repository/Turtlebot3_Lime_IsaacSim_Humble.git isaac_humble
-cd isaac_humble
-./init.sh
-```
-
-### 2. Build the Docker Image
-
-```bash
-docker build -t isaac_ws:latest .
-```
-
-This command builds a custom Docker image based on the official NVIDIA Isaac Sim 4.5.0 image, with ROS 2 Humble integration added.
-
-## Usage
-
-### Running Isaac Sim
-
-1. Start the Docker container
-
-```bash
-./isaac_sim_docker.sh
-```
-
-This will launch the "isaac-sim-ws" Docker container and give you a shell prompt inside it.
-
-2. Launch Isaac Sim
-   From within the container's shell session, start Isaac Sim using the following command
-
-```bash
-runheadless
-```
-
-3. Connect with the Omniverse Streaming Client
-   Once Isaac Sim is running in Docker, you can access it from another node using the Omniverse Streaming Client. To install the client on your client node, refer to the instructions here:
-
-https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/download.html
-
-You will need to enter the server's IP address to connect.
-
-4. Running TurtleBot3 Lime in Isaac Sim
-   To operate the TurtleBot3 Lime inside Isaac Sim, you'll need to load the Lime's USD model. You can download the USD file from this link
-
-[Google Drive](https://drive.google.com/file/d/1zj03J05ni0jtlqXg845xG0uTzDkCmqzE/view?usp=sharing)
-
-Install and place it inside **/isaac_humble/isaac_sim/documents**
-
-## Project Structure
-
-```
-.
-├── LICENSE - MIT License
-├── README.md - This file
-├── Dockerfile - Isaac Sim + ROS 2 Humble image
-├── isaac_sim_docker.sh -Script to run the Isaac Sim container
-├── init.sh - Script to initialize the directory structure
-```
-
-## Notes
-
-- The Docker image is based on the official NVIDIA Isaac Sim 4.5.0 image with ROS 2 Humble added.
-- The container uses the host's X11 server to display the GUI.
-- Data persistence is managed via volume mounts to the host's filesystem.
-- RViz2 and common ROS 2 tools are installed in the container.
-
-## Further Documentation
-
-For more detailed instructions on using TurtleBot3 Lime—including how to import URDF, run Nav2, Moveit2, Isaac_ros_yolo, and more—please visit [https://momoi.org/](https://momoi.org/).
-
-The full document will be uploaded soon.
-
-## License
-
-This project is provided under the MIT License. See the license file for more details.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
