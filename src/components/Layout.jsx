@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import TableOfContents from './TableOfContents';
 
 const Layout = ({ children }) => {
     return (
@@ -42,6 +43,7 @@ const Layout = ({ children }) => {
             <main className="main-content">
                 {children}
             </main>
+            <TableOfContents />
         </>
     );
 };

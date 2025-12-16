@@ -30,7 +30,7 @@ body {
 
 /* Sidebar */
 .sidebar {
-  width: 280px;
+  width: 250px;
   background-color: var(--bg-secondary);
   border-right: 1px solid var(--border);
   padding: 2rem 1rem;
@@ -41,6 +41,7 @@ body {
   left: 0;
   scrollbar-width: thin;
   scrollbar-color: var(--primary-dim) var(--bg-secondary);
+  z-index: 10;
 }
 
 .sidebar h1 {
@@ -58,7 +59,7 @@ body {
   padding: 0.75rem 1rem;
   color: var(--text-dim);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   border-radius: 4px;
   transition: all 0.2s ease;
   margin-bottom: 0.25rem;
@@ -79,10 +80,11 @@ body {
 
 /* Main Content */
 .main-content {
-  margin-left: 280px;
-  padding: 4rem 6rem;
+  margin-left: 250px; /* Sidebar width */
+  margin-right: 250px; /* TOC width */
+  padding: 4rem 4rem;
   flex: 1;
-  max-width: 1200px;
+  max-width: calc(100% - 500px); /* Subtract two sidebars */
 }
 
 .doc-section {
@@ -97,6 +99,7 @@ body {
   margin-bottom: 1.5rem;
   border-bottom: 1px solid var(--border);
   padding-bottom: 0.5rem;
+  scroll-margin-top: 2rem; /* Buffer for scrolling */
 }
 
 .sub-section {
@@ -107,11 +110,72 @@ body {
   color: #fff;
   font-size: 1.3rem;
   margin-bottom: 1rem;
+  margin-top: 1.5rem;
+  scroll-margin-top: 2rem; /* Buffer for scrolling */
 }
 
 .sub-section p {
   color: var(--text-dim);
   font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+/* Table of Contents Sidebar */
+.toc-sidebar {
+  width: 250px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  padding: 4rem 1.5rem;
+  overflow-y: auto;
+  border-left: 1px solid var(--border);
+  background-color: var(--bg); /* Match main bg or different if desired */
+}
+
+.toc-title {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-item {
+  margin-bottom: 0.5rem;
+}
+
+.toc-item a {
+  text-decoration: none;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  display: block;
+  transition: color 0.2s;
+  line-height: 1.4;
+}
+
+.toc-item a:hover {
+  color: var(--primary);
+}
+
+.toc-item.active a {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.toc-item.level-2 {
+  padding-left: 0;
+}
+.toc-item.level-3 {
+  padding-left: 1rem;
+  font-size: 0.85rem;
 }
 
 /* Animations */
@@ -122,7 +186,7 @@ body {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg);
@@ -133,6 +197,17 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-dim);
+}
+
+@media (max-width: 1200px) {
+  .toc-sidebar {
+    display: none;
+  }
+  .main-content {
+    margin-right: 0;
+    max-width: calc(100% - 250px);
+    padding: 3rem 2rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -146,6 +221,7 @@ body {
   }
   .main-content {
     margin-left: 0;
+    max-width: 100%;
     padding: 2rem;
   }
 }
