@@ -6,7 +6,7 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/Turtlebot3_Lime_IsaacSim_Humble">
       <App />
     </BrowserRouter>
   </StrictMode>,

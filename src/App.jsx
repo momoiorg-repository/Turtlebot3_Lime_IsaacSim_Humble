@@ -15,11 +15,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/import" element={<ImportGuide />} />
-        <Route path="/sensors/drive" element={<Drive />} />
-        <Route path="/sensors/camera" element={<Camera />} />
-        <Route path="/sensors/lidar" element={<Lidar />} />
-        <Route path="/integration/moveit2" element={<MoveIt2 />} />
-        <Route path="/integration/nav2" element={<Nav2 />} />
+        <Route path="/drive" element={<Drive />} />
+        <Route path="/camera" element={<Camera />} />
+        <Route path="/lidar" element={<Lidar />} />
+        <Route path="/moveit2" element={<MoveIt2 />} />
+        <Route path="/nav2" element={<Nav2 />} />
       </Routes>
     </Layout>
   );
