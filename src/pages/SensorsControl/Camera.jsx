@@ -6,12 +6,13 @@ const Camera = () => {
             <h2 id="camera-setup">Camera Setup</h2>
 
             <div className="sub-section">
-                <h3 id="rgb-depth-camera">RGB & Depth Camera</h3>
+                <h3 id="rgb-camera">RGB Camera</h3>
+                <img src="/Turtlebot3_Lime_IsaacSim_Humble/assets/camera_view.png" alt="Camera View" className="doc-image" />
                 <p>
-                    Publish camera data to ROS 2 using the <strong>ROS 2 Camera Helper</strong> node.
+                    The RGB camera provides visual data for navigation and object detection.
                 </p>
                 <ol>
-                    <li><strong>Create Camera:</strong> Go to <code>Create &gt; Camera</code> and place it on the robot (e.g., linked to `base_link`).</li>
+                    <li><strong>Add Sensor:</strong> Go to <code>Create &gt; Sensors &gt; Camera</code> and place it on the robot (e.g., linked to `base_link`).</li>
                     <li><strong>Create Action Graph:</strong>
                         <ul>
                             <li>Add <strong>Isaac Create Render Product</strong>: Set `cameraPrim` to your camera path.</li>
