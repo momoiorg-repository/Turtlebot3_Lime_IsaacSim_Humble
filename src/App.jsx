@@ -1,54 +1,27 @@
-import { useState } from 'react';
-import { content } from './data/content';
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import ImportGuide from './pages/ImportGuide';
+import Drive from './pages/SensorsControl/Drive';
+import Camera from './pages/SensorsControl/Camera';
+import Lidar from './pages/SensorsControl/Lidar';
+import MoveIt2 from './pages/Integration/MoveIt2';
+import Nav2 from './pages/Integration/Nav2';
 import './index.css';
 
 function App() {
-  const [activeId, setActiveId] = useState(content[0].id);
-
-  const scrollToSection = (id) => {
-    setActiveId(id);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <>
-      <nav className="sidebar">
-        <h1>Isaac Sim<br />Docs</h1>
-        <div className="nav-links">
-          {content.map((item) => (
-            <a
-              key={item.id}
-              className={`nav-item ${activeId === item.id ? 'active' : ''}`}
-              onClick={() => scrollToSection(item.id)}
-            >
-              {item.title}
-            </a>
-          ))}
-        </div>
-      </nav>
-
-      <main className="main-content">
-        {content.map((item, index) => (
-          <section
-            key={item.id}
-            id={item.id}
-            className="doc-section"
-            style={{ animationDelay: `${index * 0.1}s` }}
-          >
-            <h2>{item.title}</h2>
-            {item.sections.map((sub, idx) => (
-              <div key={idx} className="sub-section">
-                <h3>{sub.subtitle}</h3>
-                <p>{sub.text}</p>
-              </div>
-            ))}
-          </section>
-        ))}
-      </main>
-    </>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/import" element={<ImportGuide />} />
+        <Route path="/sensors/drive" element={<Drive />} />
+        <Route path="/sensors/camera" element={<Camera />} />
+        <Route path="/sensors/lidar" element={<Lidar />} />
+        <Route path="/integration/moveit2" element={<MoveIt2 />} />
+        <Route path="/integration/nav2" element={<Nav2 />} />
+      </Routes>
+    </Layout>
   );
 }
 
