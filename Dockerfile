@@ -102,12 +102,15 @@ RUN colcon mixin add default \
 
 # Option 1: Clone your local TurtleBot3 Lime sources at runtime via -v
 # Option 2: Uncomment below to fetch directly (adjust URL as needed)
-# RUN git clone https://github.com/ROBOTIS-GIT/turtlebot3.git src/turtlebot3
+RUN cd /root \
+    && git clone https://github.com/ROBOTIS-JAPAN-GIT/turtlebot3_lime.git ros_ws/src/turtlebot3
+COPY src/turtlebot3_lime /root/ros_ws/src/turtlebot3/
 
 # Install any missing dependencies via rosdep, then build the workspace
-# RUN rosdep install --from-paths src --ignore-src -r -y \
-#     && source /opt/ros/$ROS_DISTRO/setup.bash \
-#     && colcon build --symlink-install
+RUN cd /root/ros_ws \
+    && rosdep install --from-paths src --ignore-src -r -y --skip-keys "joint_state_publisher joint_state_publisher_gui warehouse_ros_mongo" \
+    && source /opt/ros/$ROS_DISTRO/setup.bash \
+    && colcon build --symlink-install
 
 
 # Environment setup for runtime
