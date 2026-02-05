@@ -218,8 +218,8 @@ local_costmap:
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         enabled: True
-        cost_scaling_factor: 0.3
-        inflation_radius: 1.0
+        cost_scaling_factor: 0.7
+        inflation_radius: 0.5
       hesai_voxel_layer:
         plugin: "nav2_costmap_2d::VoxelLayer"
         enabled: True
@@ -305,8 +305,8 @@ global_costmap:
         map_subscribe_transient_local: True
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 0.3
-        inflation_radius: 1.0
+        cost_scaling_factor: 0.7
+        inflation_radius: 0.5
       always_send_full_costmap: True
   global_costmap_client:
     ros__parameters:
