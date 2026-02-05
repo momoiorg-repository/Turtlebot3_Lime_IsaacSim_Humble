@@ -47,8 +47,8 @@ RUN apt-get update \
        ros-humble-ros-base=0.10.0-1* \
        # Gazebo integration
        ros-humble-gazebo-* \
-       # RMW implementation
-       ros-humble-rmw-cyclonedds-cpp \
+    # RMW implementation (Fast DDS)
+    ros-humble-rmw-fastrtps-cpp \
        # GUI tools
        ros-humble-rqt* ros-humble-rviz2 \
        # TurtleBot3 Lime dependencies
@@ -77,34 +77,15 @@ RUN colcon mixin add default \
       https://raw.githubusercontent.com/colcon/colcon-metadata-repository/master/index.yaml \
     && colcon metadata update
 
-# Install Miniconda
-# RUN curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh \
-#     && bash miniconda.sh -b -p /opt/conda \
-#     && rm miniconda.sh \
-#     && /opt/conda/bin/conda clean --all --yes \
-#     && ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh \
-#     && echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc \
-#     && echo "conda activate base" >> ~/.bashrc
-
-# Make conda available in the current session
-# ENV PATH="/opt/conda/bin:${PATH}"
-
-# Install Isaac lab
-# RUN apt-get update \
-#     && git clone https://github.com/umegan/IsaacLab_lime.git /IsaacLab \
-#     && cd /IsaacLab \
-#     && ln -s /isaac-sim _isaac_sim \
-#     && ./isaaclab.sh --conda lab \
-#     && . /opt/conda/etc/profile.d/conda.sh \
-#     && conda activate lab \
-#     && ./isaaclab.sh --install 
-
 
 # Option 1: Clone your local TurtleBot3 Lime sources at runtime via -v
 # Option 2: Uncomment below to fetch directly (adjust URL as needed)
 RUN cd /root \
     && git clone https://github.com/ROBOTIS-JAPAN-GIT/turtlebot3_lime.git ros_ws/src/turtlebot3
 COPY src/turtlebot3_lime /root/ros_ws/src/turtlebot3/
+
+RUN mkdir -p /root/.ros
+COPY fastdds.xml /root/.ros/fastdds.xml
 
 # Install any missing dependencies via rosdep, then build the workspace
 RUN cd /root/ros_ws \
@@ -113,8 +94,10 @@ RUN cd /root/ros_ws \
     && colcon build --symlink-install
 
 
-# Environment setup for runtime
-RUN echo 'export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp' >> ~/.bashrc \
+# Environment setup for runtime (Fast DDS)
+RUN echo 'export RMW_IMPLEMENTATION=rmw_fastrtps_cpp' >> ~/.bashrc \
+    && echo 'export FASTRTPS_DEFAULT_PROFILES_FILE=/root/.ros/fastdds.xml' >> ~/.bashrc \
+    && echo 'export FASTDDS_DEFAULT_PROFILES_FILE=/root/.ros/fastdds.xml' >> ~/.bashrc \
     && echo 'export ROS_DOMAIN_ID=31' >> ~/.bashrc \
     && echo 'source /opt/ros/$ROS_DISTRO/setup.bash' >> ~/.bashrc \
     && echo 'export XDG_RUNTIME_DIR=/tmp/runtime-root' >> ~/.bashrc

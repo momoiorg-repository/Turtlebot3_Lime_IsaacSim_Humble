@@ -44,7 +44,7 @@ def generate_launch_description():
             [
                 FindPackageShare('turtlebot3_lime_navigation2'),
                 'map',
-                'draft_lime.yaml'
+                'simple_room.yaml'
             ]
         )
     )
@@ -55,7 +55,7 @@ def generate_launch_description():
             [
                 FindPackageShare('turtlebot3_lime_navigation2'),
                 'param',
-                'turtlebot3_use_sim_time_zw.yaml'
+                'turtlebot3_use_sim_time_momoi.yaml'
             ]
         )
     )
